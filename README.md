@@ -2,7 +2,7 @@ This is small [Promises/A+](https://promisesaplus.com) implementation that I wro
 
 See it in action:
 
-```sh
+```
 git clone https://github.com/scwood/simple-promise
 cd simple-promise
 npm install
