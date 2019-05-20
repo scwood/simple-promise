@@ -1,8 +1,8 @@
-This is small [Promises/A+](https://promisesaplus.com) implementation that I wrote for fun and to try and understand the promises spec a little better. All tests pass!
+This is a small [Promises/A+](https://promisesaplus.com) implementation that I wrote to try and understand promises a little better.
 
-I also added some of the modern goodies not defined in the spec like the constructor API, `.catch`, and the static `resolve`/`reject`/`all` methods.
+On top of what's defined in the spec, I also added some of the modern goodies like the constructor API, `.catch`, and the static `resolve`/`reject`/`all` methods.
 
-See it in action:
+To run the Promises/A+ test suite:
 
 ```
 git clone https://github.com/scwood/simple-promise
