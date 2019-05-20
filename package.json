@@ -1,0 +1,21 @@
+{
+  "name": "SimplePromise",
+  "version": "1.0.0",
+  "main": "SimplePromise.js",
+  "license": "MIT",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/swood/simple-promise"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-scwood": "^1.0.2",
+    "promises-aplus-tests": "^2.1.2"
+  },
+  "eslintConfig": {
+    "extends": "scwood"
+  },
+  "scripts": {
+    "test": "promises-aplus-tests adapter.js"
+  }
+}
