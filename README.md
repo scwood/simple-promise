@@ -1,4 +1,6 @@
-This is small [Promises/A+](https://promisesaplus.com) implementation that I wrote to try and understand promises a little better. All tests pass and I tried to make it as simple as possible!
+This is small [Promises/A+](https://promisesaplus.com) implementation that I wrote for fun and to try and understand the promises spec a little better. All tests pass!
+
+I also added some of the modern goodies not defined in the spec like the constructor API, `.catch`, and the static `resolve`/`reject`/`all` methods.
 
 See it in action:
 
