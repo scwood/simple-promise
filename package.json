@@ -7,6 +7,9 @@
     "type" : "git",
     "url" : "https://github.com/swood/simple-promise"
   },
+  "engines": {
+    "node" : ">=8.0.0"
+  },
   "devDependencies": {
     "eslint": "^5.16.0",
     "eslint-config-scwood": "^1.0.2",
