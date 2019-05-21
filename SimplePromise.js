@@ -131,15 +131,23 @@ SimplePromise.reject = (reason) => {
 
 SimplePromise.all = (values) => {
   return new SimplePromise((resolve, reject) => {
-    let numResolved = 0;
+    if (!isIterable(values)) {
+      reject(new TypeError(`${values} is not iterable`));
+      return;
+    }
+    const promises = Array.from(values).map(SimplePromise.resolve);
+    if (promises.length === 0) {
+      resolve([]);
+      return;
+    }
     const results = [];
-    const promises = values.map((v) => SimplePromise.resolve(v));
+    let numberResolved = 0;
     promises.forEach((promise, i) => {
       promise
         .then((value) => {
           results[i] = value;
-          numResolved++;
-          if (numResolved === promises.length) {
+          numberResolved++;
+          if (numberResolved === promises.length) {
             resolve(results);
           }
         })
@@ -147,5 +155,9 @@ SimplePromise.all = (values) => {
     });
   });
 };
+
+function isIterable(item) {
+  return item != null && typeof item[Symbol.iterator] === 'function';
+}
 
 module.exports = SimplePromise;
