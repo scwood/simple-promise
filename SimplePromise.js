@@ -1,10 +1,11 @@
+const PromiseState = {
+  Pending: "pending",
+  Fulfilled: "fulfilled",
+  Rejected: "rejected",
+};
+
 function SimplePromise(resolver) {
-  const STATES = {
-    PENDING: 'pending',
-    FULFILLED: 'fulfilled',
-    REJECTED: 'rejected',
-  };
-  let currentState = STATES.PENDING;
+  let currentState = PromiseState.Pending;
   let finalValue;
   const consumers = [];
 
@@ -15,7 +16,7 @@ function SimplePromise(resolver) {
 
   this.then = (onFulfilled, onRejected) => {
     return new SimplePromise((resolve, reject) => {
-      consumers.push({resolve, reject, onFulfilled, onRejected});
+      consumers.push({ resolve, reject, onFulfilled, onRejected });
       broadcast();
     });
   };
@@ -25,11 +26,11 @@ function SimplePromise(resolver) {
   };
 
   function fulfill(value) {
-    transition(STATES.FULFILLED, value);
+    transition(PromiseState.Fulfilled, value);
   }
 
   function reject(reason) {
-    transition(STATES.REJECTED, reason);
+    transition(PromiseState.Rejected, reason);
   }
 
   function transition(state, value) {
@@ -43,7 +44,7 @@ function SimplePromise(resolver) {
 
   function resolve(value) {
     if (this === value) {
-      throw new TypeError('Resolved value is promise itself');
+      throw new TypeError("Resolved value is promise itself");
     } else if (value instanceof SimplePromise) {
       value.then(resolve, reject);
     } else if (isFunction(value) || isObject(value)) {
@@ -65,7 +66,7 @@ function SimplePromise(resolver) {
                 wasCalled = true;
                 reject(r);
               }
-            },
+            }
           );
         } else {
           fulfill(value);
@@ -105,19 +106,11 @@ function SimplePromise(resolver) {
   }
 
   function isPending() {
-    return currentState === STATES.PENDING;
+    return currentState === PromiseState.Pending;
   }
 
   function isFulfilled() {
-    return currentState === STATES.FULFILLED;
-  }
-
-  function isFunction(value) {
-    return typeof value === 'function';
-  }
-
-  function isObject(value) {
-    return value === Object(value);
+    return currentState === PromiseState.Fulfilled;
   }
 }
 
@@ -156,8 +149,16 @@ SimplePromise.all = (values) => {
   });
 };
 
-function isIterable(item) {
-  return item != null && typeof item[Symbol.iterator] === 'function';
+function isFunction(value) {
+  return typeof value === "function";
+}
+
+function isObject(value) {
+  return value === Object(value);
+}
+
+function isIterable(value) {
+  return value != null && typeof value[Symbol.iterator] === "function";
 }
 
 module.exports = SimplePromise;

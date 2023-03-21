@@ -1,6 +1,6 @@
 {
-  "name": "SimplePromise",
-  "version": "1.0.0",
+  "name": "simple-promise",
+  "version": "1.0.1",
   "main": "SimplePromise.js",
   "license": "MIT",
   "repository": {
@@ -11,15 +11,14 @@
     "node": ">=8.0.0"
   },
   "devDependencies": {
-    "eslint": "^5.16.0",
-    "eslint-config-scwood": "^1.0.2",
     "mocha": "^6.1.4",
     "promises-aplus-tests": "^2.1.2"
   },
-  "eslintConfig": {
-    "extends": "scwood"
-  },
+  "prettier": {},
   "scripts": {
     "test": "mocha SimplePromise.spec.js"
+  },
+  "dependencies": {
+    "prettier": "^2.8.6"
   }
 }
