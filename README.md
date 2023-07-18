@@ -1,4 +1,4 @@
-This is a [Promises/A+](https://promisesaplus.com) implementation that I wrote to try and understand promises better.
+This is a [Promises/A+](https://promisesaplus.com) implementation that I wrote for fun.
 
 On top of what's defined in the spec, I also added some of the modern goodies like the constructor API, `.catch`, and the static `.resolve`/`.reject`/`.all` methods.
 
